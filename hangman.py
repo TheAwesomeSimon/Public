@@ -50,5 +50,3 @@ while count < 8:
             print(hang_dict['hang' + str(count)])
 
 stop = input()
-
-#TEST FOR GIT
