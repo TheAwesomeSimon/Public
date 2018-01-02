@@ -18,7 +18,7 @@ hang_dict = {
     'hang4': '  ____ ' + "\n" + ' |    O ' + "\n" + ' |   \|' + "\n" + ' |     ' + "\n" + ' |      ' + "\n" + '_|_',
     'hang5': '  ____ ' + "\n" + ' |    O ' + "\n" + ' |   \|/' + "\n" + ' |     ' + "\n" + ' |      ' + "\n" + '_|_',
     'hang6': '  ____ ' + "\n" + ' |    O ' + "\n" + ' |   \|/' + "\n" + ' |   / ' + "\n" + ' |  /   ' + "\n" + '_|_',
-    'hang7': '  ____ ' + "\n" + ' |    O ' + "\n" + ' |   \|/' + "\n" + ' |   / \\' + "\n" + ' |  /   \\' + "\n" + '_|_' + "\n" + 'G A M E   O V E R'
+    'hang7': '  ____ ' + "\n" + ' |    O ' + "\n" + ' |   \|/' + "\n" + ' |   / \\' + "\n" + ' |  /   \\' + "\n" + '_|_'
 }
 
 # function will find all occurences of char in string
@@ -33,7 +33,7 @@ print(word_hidden)
 count = 1
 while count < 8:
     if '_ ' not in word_hidden:
-        print('CONGRATULATIONS! YOU WIN!')
+        print('CONGRATULATIONS! YOU WIN!' + "\n" + 'press any button and ENTER to exit')
         break
     else:
         letter = input().upper()
@@ -47,6 +47,10 @@ while count < 8:
             print(word_hidden)
         else:
             count = count + 1
-            print(hang_dict['hang' + str(count)])
-
-stop = input()
+            if count > 7:
+                pass
+            elif count == 7:
+                print(hang_dict['hang' + str(count)])
+                print('GAME OVER!' + "\n" + 'The word was ' + word + "\n" + 'press any button and ENTER to exit')
+            else:
+                print(hang_dict['hang' + str(count)])
