@@ -13,7 +13,7 @@ weather_forecast = str(weather_forecast_list[0])
 #daily menu from MyFood
 myfood_web = requests.get('https://www.sklizeno.cz/o-nas/brno-holandska/')
 myfood_tree = html.fromstring(myfood_web.content)
-myfood_meals = myfood_tree.xpath('//div[@class="menu container"]//div[@class="dny"]//div[@class="jidla"]//div//div[@class="item"]//ul//li//span/text()')
+myfood_meals = myfood_tree.xpath('//div[@class="jidla"]//div[not(contains(@style, "0px;"))]//div[@class="item"]//ul//li//span/text()')
 myfood_price = myfood_tree.xpath('//div[@class="dny"]//div//div[@class="jidla"]//div[@style[contains("display: block")]]//div[@class="item"]//ul//li//small/text()')
 
 print(myfood_meals)
@@ -21,7 +21,7 @@ print(myfood_meals)
 
 
 
-
+input("")
 
 
 
