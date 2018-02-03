@@ -29,7 +29,8 @@ def get_meals(x):
     meal_divs = meal_all.find_all('div')[x]
     meal_fin = meal_divs.find_all('span')
     for item in meal_fin:
-        print(item.text.strip())
+        meal_list.append(item.text.strip())
+    return meal_list
 
 def get_length():
     meal_all = meal_soup.find_all('div', class_= 'jidla')[0]
@@ -37,72 +38,88 @@ def get_length():
     count = 0
     for item in meal_divs:
         count = count + 1
-    return (count/2)
+    return int((count/2))
 
         
 def get_menu():
-    meal_error = ''
+    meal_error = 'Error'
+    daily_menu = []
     if get_length() == 1:
         if week_day() == 5:
-            get_meals(5)
-            get_meals(6)
+            daily_menu.append(get_meals(5))
+            daily_menu.append(get_meals(6))
+            return daily_menu
         else:
             return(meal_error)
     elif get_length() == 2:
         if week_day() == 4:
-            get_meals(4)
-            get_meals(5)
+            daily_menu.append(get_meals(4))
+            daily_menu.append(get_meals(5))
+            return daily_menu
         elif week_day() == 6:
-            get_meals(7)
-            get_meals(8)
+            daily_menu.append(get_meals(7))
+            daily_menu.append(get_meals(8))
+            return daily_menu
         else:
             return(meal_error)
     elif get_length() == 3:
         if week_day() == 3:
-            get_meals(3)
-            get_meals(4)
+            daily_menu.append(get_meals(3))
+            daily_menu.append(get_meals(4))
+            return daily_menu
         elif week_day() == 4:
-            get_meals(5)
-            get_meals(6)
+            daily_menu.append(get_meals(5))
+            daily_menu.append(get_meals(6))
+            return daily_menu
         elif week_day() == 5:
-            get_meals(8)
-            get_meals(9)
+            daily_menu.append(get_meals(8))
+            daily_menu.append(get_meals(9))
+            return daily_menu
         else:
             return(meal_error)
     elif get_length() == 4:
         if week_day() == 1:
-            get_meals(2)
-            get_meals(3)
+            daily_menu.append(get_meals(2))
+            daily_menu.append(get_meals(3))
+            return daily_menu
         elif week_day() == 2:
-            get_meals(5)
-            get_meals(6)
+            daily_menu.append(get_meals(5))
+            daily_menu.append(get_meals(6))
+            return daily_menu
         elif week_day() == 3:
-            get_meals(8)
-            get_meals(9)
+            daily_menu.append(get_meals(8))
+            daily_menu.append(get_meals(9))
+            return daily_menu
         elif week_day() == 4:
-            get_meals(11)
-            get_meals(12)
+            daily_menu.append(get_meals(11))
+            daily_menu.append(get_meals(12))
+            return daily_menu
         else:
             return(meal_error)
     elif get_length() == 5:
         if week_day() == 1:
-            get_meals(1)
-            get_meals(2)
+            daily_menu.append(get_meals(1))
+            daily_menu.append(get_meals(2))
+            return daily_menu
         elif week_day() == 2:
-            get_meals(4)
-            get_meals(5)
+            daily_menu.append(get_meals(4))
+            daily_menu.append(get_meals(5))
+            return daily_menu
         elif week_day() == 3:
-            get_meals(7)
-            get_meals(8)
+            daily_menu.append(get_meals(7))
+            daily_menu.append(get_meals(8))
+            return daily_menu
         elif week_day() == 4:
-            get_meals(10)
-            get_meals(11)
+            daily_menu.append(get_meals(10))
+            daily_menu.append(get_meals(11))
+            return daily_menu
         elif week_day() == 5:
-            get_meals(13)
-            get_meals(14)
+            daily_menu.append(get_meals(13))
+            daily_menu.append(get_meals(14))
+            return daily_menu
         else:
             return(meal_error)
     else:
         return(meal_error)
 
-get_menu()
+print(get_menu())
