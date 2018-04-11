@@ -1,14 +1,13 @@
-const blankLine = '  |   |  ';
+const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
+    var board = [];
+    for (let row = 0; row < numberOfRows; row++) {
+        rows = [];
+        for (let column = 0; column < numberOfColumns; column++) {
+            rows.push(' ');
+        };
+        board.push(rows);
+    };
+    return board;
+};
 
-console.log('This is what an empy board would look like:');
-console.log(blankLine);
-console.log(blankLine);
-console.log(blankLine);
-
-const guessLine = '1 |   |  ';
-const bombLine = '  | B |  ';
-
-console.log('This is what a board with a guess and a bomb on it would look like:');
-console.log(guessLine);
-console.log(bombLine);
-console.log(blankLine);
+console.log(generatePlayerBoard(3,3));
