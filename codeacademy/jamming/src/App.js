@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import SearchBar from './components/SearchBar/SearchBar';
+import { Spotify } from './util/Spotify'
 
 class App extends Component {
   constructor(props) {

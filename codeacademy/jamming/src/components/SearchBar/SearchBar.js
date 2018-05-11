@@ -1,8 +1,9 @@
 import React from 'react';
+import { Spotify } from '../../util/Spotify'
 
 export default class SearchBar extends React.Component {
     handleClick() {
-        alert("Hello");
+        Spotify.getAuthorization()
     }
     render() {
         return(
