@@ -1,10 +1,67 @@
 const clientID = 'f6650a977cb74c1fb110dfb9e617d74c';
+var userID = '';
+
 
 export const Spotify = {
     getAuthorization() {
-        return fetch(`https://accounts.spotify.com/authorize/?client_id=${clientID}&response_type=code&redirect_uri=https%3A%2F%2Fexample.com%2Fcallback&scope=useruser-read-private`
-    ).then(response => {
-        console.log(response);
-    })
+        window.location.replace(`https://accounts.spotify.com/authorize/?client_id=${clientID}&response_type=token&redirect_uri=http://localhost:3000/&scope=playlist-modify-private%20user-read-private&show_dialog=false`)
+    },
+
+    getAccessToken() {
+        return window.location.href.split('=')[1].split('&')[0];
+    },
+
+    createPlaylist() {
+        const accessToken = this.getAccessToken();
+        return fetch(`https://api.spotify.com/v1/me`, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        }).then(response => {
+            return response.json();
+        }).then(jsonResponse => {
+            console.log(jsonResponse);
+            return jsonResponse.id;
+        }).then(userID => {
+            userID = (JSON.parse(userID)).toString();
+            console.log(userID);
+            return fetch(`https://api.spotify.com/v1/users/11168973901/playlists`,{
+                method: "POST",
+                headers: {
+                        "Authorization": `Bearer ${accessToken}`,
+                        "Content-Type": "application/json"
+                    },
+                body: JSON.stringify({
+                    "name": "New Playlist",  //this needs to dynamically change
+                    "public": "false"
+                }),
+                dataType: 'json'
+            }).then(response => {
+                return response.json();
+            }).then(jsonResponse => {
+                console.log(jsonResponse);
+            })
+        })
+    },
+
+    handleSearch(term, type) {
+        const accessToken = this.getAccessToken();
+        return fetch(`https://api.spotify.com/v1/search?q=${term}&type=${type}`,{
+            headers: {
+                "Authorization": `Bearer ${accessToken}`
+            }
+        }).then(response => {
+            return response.json();
+        }).then(jsonResponse => {
+            if (jsonResponse.tracks) {
+                return jsonResponse.tracks.items.map(item => {
+                    return {
+                        artist: item.artists[0].name
+                    }
+                })
+            }
+                console.log(jsonResponse.tracks.items[0].artists[0].name);
+            })
     }
+
 };

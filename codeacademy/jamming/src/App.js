@@ -10,12 +10,19 @@ class App extends Component {
     this.state = {
       results: []
     };
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+  handleClick() {
+    Spotify.createPlaylist();
+  }
+  handleLogin() {
+    Spotify.getAuthorization()
   }
   render() {
     return (
       <div className="app">
-        <h1>Jamming</h1>
-        <SearchBar />
+        <h1>Yamming</h1>
+        <SearchBar handleLogin={this.handleLogin}/>
       </div>
     );
   }
