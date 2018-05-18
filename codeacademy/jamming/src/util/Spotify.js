@@ -32,8 +32,8 @@ export const Spotify = {
                         "Content-Type": "application/json"
                     },
                 body: JSON.stringify({
-                    "name": "New Playlist",  //this needs to dynamically change
-                    "public": "false"
+                    "name": "New Playlist",  //this needs to change
+                    "public": "false" //checkbox for private/public playlist
                 }),
                 dataType: 'json'
             }).then(response => {
@@ -46,6 +46,7 @@ export const Spotify = {
 
     handleSearch(term, type) {
         const accessToken = this.getAccessToken();
+        console.log(term, type);
         return fetch(`https://api.spotify.com/v1/search?q=${term}&type=${type}`,{
             headers: {
                 "Authorization": `Bearer ${accessToken}`
@@ -53,14 +54,7 @@ export const Spotify = {
         }).then(response => {
             return response.json();
         }).then(jsonResponse => {
-            if (jsonResponse.tracks) {
-                return jsonResponse.tracks.items.map(item => {
-                    return {
-                        artist: item.artists[0].name
-                    }
-                })
-            }
-                console.log(jsonResponse.tracks.items[0].artists[0].name);
+            console.log(jsonResponse);
             })
     }
 

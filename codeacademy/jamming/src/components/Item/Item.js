@@ -16,11 +16,11 @@ export default class Item extends React.Component {
         return(
             <div className="Item">
                 <div className="Song">
-                <p>{items.item.song}</p>
+                <p>{this.props.results.result.name}</p>
+                <p>Artist {this.props.results.result.artist}</p>
+                <p>Album {this.props.results.result.album}</p>
                 </div>
             </div>
         )
     }
 }
-
-console.log(items.item.song);
