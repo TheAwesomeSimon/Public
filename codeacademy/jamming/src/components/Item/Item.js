@@ -1,24 +1,15 @@
 import React from 'react';
 
-const items = {
-    item: [
-        {song: "Hello",
-        artist: "Adele",
-        album: "21"},
-        {song: "Thrift Shop",
-        artist: "Macklemore",
-        album: "The Heist"}
-    ]
-};
 
 export default class Item extends React.Component {
     render() {
         return(
             <div className="Item">
                 <div className="Song">
-                <p>{this.props.results.result.name}</p>
-                <p>Artist {this.props.results.result.artist}</p>
-                <p>Album {this.props.results.result.album}</p>
+                <p>{this.props.track.name}</p>
+                <p>By {this.props.track.artist}</p>
+                <p>Album {this.props.track.album}</p>
+                <img src={this.props.track.image} alt='Album Cover'/>
                 </div>
             </div>
         )
