@@ -9,7 +9,6 @@ export default class SearchBar extends React.Component {
             type: 'track'
         };
 
-        this.handleLogin = this.handleLogin.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
         this.handleChange = this.handleChange.bind(this);
 
@@ -35,9 +34,6 @@ export default class SearchBar extends React.Component {
     handleSearchFor(value) {
         this.setState({type: value});
     }
-    handleLogin() {
-        this.props.handleLogin();
-    }
     handleSearch() {
         this.props.handleSearch(this.state.query, this.state.type);
     }
@@ -54,7 +50,6 @@ export default class SearchBar extends React.Component {
                     <ul>
                         {this.renderTypePicker()}
                     </ul>
-                    <button onClick={this.handleLogin}>Let's Go</button>
                     <button onClick={this.handleSearch}>Search</button>
                 </div> 
             </div>
