@@ -1,4 +1,5 @@
 import React from 'react';
+import connectButton from './connect_button.png';
 
 export default class LoginScreen extends React.Component {
     constructor(props) {
@@ -13,7 +14,8 @@ export default class LoginScreen extends React.Component {
             <div className="LoginScreen">
             <h1>jamming</h1>
             <p>Sign up or log in to your Spotify account...</p>
-            <button onClick={this.handleLogin}>Let's Go!</button>
+                <img onClick={this.handleLogin} src={connectButton} width="15%" height="15%" alt="Connect with Spotify" />
+            
             </div>
         );
     }
