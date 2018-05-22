@@ -1,0 +1,23 @@
+.SearchBar {
+    justify-content: center;
+    text-align: center
+    }
+
+    input {
+        border: none;
+        border-bottom: 2px solid #248f24;
+        background: none;
+        justify-content: center;
+        text-align: center;
+        color: #cccccc
+    }
+    
+    .Buttons ul {
+        cursor: pointer;
+        text-align: center;
+        font-weight: 500;
+        border-bottom: 1px solid #cccccc;
+        color: #cccccc;
+        font: caption
+    }
+

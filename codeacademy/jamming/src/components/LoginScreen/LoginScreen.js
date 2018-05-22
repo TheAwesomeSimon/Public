@@ -12,9 +12,9 @@ export default class LoginScreen extends React.Component {
     render() {
         return (
             <div className="LoginScreen">
-            <h1>jamming</h1>
+            <h1>Jamming</h1>
             <p>Sign up or log in to your Spotify account...</p>
-                <img onClick={this.handleLogin} src={connectButton} width="15%" height="15%" alt="Connect with Spotify" />
+                <img onClick={this.handleLogin} src={connectButton} width="15%" height="15%" class="center" alt="Connect with Spotify" />
             
             </div>
         );

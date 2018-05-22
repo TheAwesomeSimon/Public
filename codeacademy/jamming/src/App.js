@@ -28,11 +28,11 @@ class App extends Component {
       tracks.push(item.uri);
     });
     Spotify.createPlaylist(this.state.playlistName, tracks);
-    this.setState({ playlist: []});
+    this.setState({ playlist: [] });
   }
   handleLogin() {
     Spotify.getAuthorization().then(something => {
-      this.setState({ loggedIn: true});
+      this.setState({ loggedIn: true });
     })
 
   }
@@ -54,17 +54,17 @@ class App extends Component {
     this.state.playlist.splice(index, 1);
     let arr = this.state.results;
     arr.push(track);
-    this.setState({ results: arr}); 
+    this.setState({ results: arr });
   }
   playlistName(e) {
-    this.setState({playlistName: e.target.value});
+    this.setState({ playlistName: e.target.value });
   }
   checkLogin() {
     /* I really wanted a login screen and this is the simplest solution I could think of. If jamming
     was deployed on the web, the spoitfy login would redirect to new screen and this wouldn't be needed */
     try {
       return (window.location.href.split('#')[1].split('=')[0] === 'access_token');
-    } catch(err) {
+    } catch (err) {
       return false
     }
   }
@@ -76,14 +76,38 @@ class App extends Component {
         </div>
       );
     } else {
-      return (
-        <div className="app">
-          <h1>jamming</h1>
-          <SearchBar handleSearch={this.searchSpotify}/>
-          <Results results={this.state.results} handlePlus={this.handlePlus}/>
-          <Playlist playlist={this.state.playlist} handleMinus={this.handleMinus} createPlaylist={this.createPlaylist} playlistName={this.playlistName}/>
-        </div>
-      );
+      if ((this.state.results).length === 0) {
+        return (
+          <body id="body">
+            <div className="app">
+              <h1>Jamming</h1>
+              <div className="Searchbar">
+                <SearchBar handleSearch={this.searchSpotify} />
+              </div>
+              <div className="Results" >
+                <Results results={this.state.results} handlePlus={this.handlePlus} />
+              </div>
+            </div>
+          </body>
+        );
+      } else {
+        return (
+          <body id="body">
+            <div className="app">
+              <h1>jamming</h1>
+              <div className="Searchbar">
+                <SearchBar handleSearch={this.searchSpotify} />
+              </div>
+              <div className="Results" >
+                <Results results={this.state.results} handlePlus={this.handlePlus} />
+              </div>
+              <div className="Playlist" >
+                <Playlist playlist={this.state.playlist} handleMinus={this.handleMinus} createPlaylist={this.createPlaylist} playlistName={this.playlistName} />
+              </div>
+            </div>
+          </body>
+        );
+      }
     }
   }
 }

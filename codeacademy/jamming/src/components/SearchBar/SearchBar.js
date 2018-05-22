@@ -1,4 +1,6 @@
 import React from 'react';
+import './SearchBar.css';
+import button from './button.png';
 
 export default class SearchBar extends React.Component {
     constructor(props) {
@@ -50,7 +52,7 @@ export default class SearchBar extends React.Component {
                     <ul>
                         {this.renderTypePicker()}
                     </ul>
-                    <button onClick={this.handleSearch}>Search</button>
+                    <img src={button} onClick={this.handleSearch} width="2%" height="2%"/>
                 </div> 
             </div>
         )
