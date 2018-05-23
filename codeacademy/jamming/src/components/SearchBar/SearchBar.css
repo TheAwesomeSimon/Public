@@ -9,15 +9,33 @@
         background: none;
         justify-content: center;
         text-align: center;
-        color: #cccccc
+        color: #cccccc;
+        width: 300px;
+
     }
     
     .Buttons ul {
         cursor: pointer;
         text-align: center;
         font-weight: 500;
-        border-bottom: 1px solid #cccccc;
         color: #cccccc;
-        font: caption
+        font: caption;
+        display: inline;
+        list-style-type: none;
     }
 
+    .Buttons li:hover {
+        color: #808080;
+    }
+
+    .Buttons li.active {
+        color: #248f24;
+    }
+
+    .Buttons li {
+        float:left;
+        position: relative;
+        right:-45%;
+        text-align: right;
+        padding: 15px;
+    }

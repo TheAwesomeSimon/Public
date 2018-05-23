@@ -1,0 +1,9 @@
+.Item-image {
+    float: left;
+    margin-right: 5px;
+}
+
+p {
+    margin: 5px;
+    text-align: left;
+}

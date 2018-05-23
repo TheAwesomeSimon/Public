@@ -34,26 +34,26 @@ export default class SearchBar extends React.Component {
         }
     }
     handleSearchFor(value) {
-        this.setState({type: value});
+        this.setState({ type: value });
     }
     handleSearch() {
         this.props.handleSearch(this.state.query, this.state.type);
     }
     handleChange(e) {
-        this.setState({query: e.target.value});
+        this.setState({ query: e.target.value });
     }
     render() {
-        return(
+        return (
             <div className="SearchBar">
                 <div className="SearchBar-bar">
-                    <input onChange={this.handleChange} placeholder="Search"/>
+                    <input onChange={this.handleChange} placeholder="Search" />
+                    <img src={button} onClick={this.handleSearch} width="2%" height="2%" className="center" alt='' />
                 </div>
                 <div className="Buttons">
                     <ul>
                         {this.renderTypePicker()}
                     </ul>
-                    <img src={button} onClick={this.handleSearch} width="2%" height="2%"/>
-                </div> 
+                </div>              
             </div>
         )
     }

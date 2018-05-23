@@ -1,5 +1,6 @@
 import React from 'react';
 import Item from '../Item/Item';
+import './Results.css';
 
 export default class Results extends React.Component {
     constructor(props) {
@@ -11,11 +12,17 @@ export default class Results extends React.Component {
     }
     render() {
         return <div className="Results">
-            {this.props.results.map(result =>{
+            {this.props.results.map(result => {
                 return (
-                    <div className="Test" key={result.id}>
-                    <Item track={result}/>
-                    <button onClick={() => this.handlePlus(result)}>+</button>
+                    <div className="Result" >
+                        <div className="Plus" >
+                            <button onClick={() => this.handlePlus(result)}>+</button>
+                        </div>
+                        <div className="ResultItem" key={result.id}>
+                            <Item track={result} />
+                        </div>
+
+
                     </div>
                 );
             })}

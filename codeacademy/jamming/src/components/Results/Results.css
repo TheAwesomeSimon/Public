@@ -1,0 +1,14 @@
+.Plus {
+    float: left;
+    margin-right: 5px;
+}
+
+.ResultItem {
+    margin: 0px;
+}
+
+button {
+    height: 64px;
+    background-color: green;
+    color: white;
+}

@@ -1,0 +1,15 @@
+.Minus {
+    float: left;
+    margin-right: 5px;
+}
+
+.PlaylistItem {
+    margin: 0px;
+}
+
+#buttonMinus {
+    height: 64px;
+    background-color: red;
+    color: white;
+
+}

@@ -1,15 +1,18 @@
 import React from 'react';
+import './Item.css';
 
 
 export default class Item extends React.Component {
     render() {
-        return(
+        return (
             <div className="Item">
-                <div className="Song">
-                <p>{this.props.track.name}</p>
-                <p>By {this.props.track.artist}</p>
-                <p>Album {this.props.track.album}</p>
-                <img src={this.props.track.image} alt='Album Cover'/>
+                <div className="Item-image" >
+                    <img src={this.props.track.image} alt=''/>
+                </div>
+                <div className="Item-info">
+                    <p id="name">{this.props.track.name}</p>
+                    <p id="artist">By {this.props.track.artist}</p>
+                    <p id="album">Album {this.props.track.album}</p>
                 </div>
             </div>
         )

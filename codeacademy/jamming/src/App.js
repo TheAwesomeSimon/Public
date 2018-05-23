@@ -6,6 +6,7 @@ import Results from './components/Results/Results';
 import Playlist from './components/Playlist/Playlist';
 import LoginScreen from './components/LoginScreen/LoginScreen';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +14,7 @@ class App extends Component {
       results: [],
       playlist: [],
       playlistName: 'New Playlist',
+
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.searchSpotify = this.searchSpotify.bind(this);
@@ -33,8 +35,7 @@ class App extends Component {
   handleLogin() {
     Spotify.getAuthorization().then(something => {
       this.setState({ loggedIn: true });
-    })
-
+    });
   }
   searchSpotify(term, type) {
     Spotify.handleSearch(term, type).then(tracks => {
@@ -47,14 +48,12 @@ class App extends Component {
     let arr = this.state.playlist;
     arr.push(track);
     this.setState({ playlist: arr });
-
   }
   handleMinus(track) {
     let index = this.state.playlist.indexOf(track);
     this.state.playlist.splice(index, 1);
     let arr = this.state.results;
-    arr.push(track);
-    this.setState({ results: arr });
+    this.setState({ Playlist: arr });
   }
   playlistName(e) {
     this.setState({ playlistName: e.target.value });
@@ -76,7 +75,8 @@ class App extends Component {
         </div>
       );
     } else {
-      if ((this.state.results).length === 0) {
+      //renders just the searchbar - nothing is in the results nor playlist
+      if ((this.state.results).length === 0 && (this.state.playlist).length === 0)  {
         return (
           <body id="body">
             <div className="app">
@@ -84,25 +84,25 @@ class App extends Component {
               <div className="Searchbar">
                 <SearchBar handleSearch={this.searchSpotify} />
               </div>
-              <div className="Results" >
-                <Results results={this.state.results} handlePlus={this.handlePlus} />
-              </div>
             </div>
           </body>
         );
       } else {
+        //renders results and playlist
         return (
           <body id="body">
             <div className="app">
-              <h1>jamming</h1>
+              <h1>Jamming</h1>
               <div className="Searchbar">
                 <SearchBar handleSearch={this.searchSpotify} />
               </div>
-              <div className="Results" >
-                <Results results={this.state.results} handlePlus={this.handlePlus} />
-              </div>
-              <div className="Playlist" >
-                <Playlist playlist={this.state.playlist} handleMinus={this.handleMinus} createPlaylist={this.createPlaylist} playlistName={this.playlistName} />
+>
+                <div className="Results" >
+                  <Results results={this.state.results} handlePlus={this.handlePlus} />
+                </div>
+                <div className="Playlist" >
+                  <Playlist playlist={this.state.playlist} handleMinus={this.handleMinus} createPlaylist={this.createPlaylist} playlistName={this.playlistName} />
+
               </div>
             </div>
           </body>
