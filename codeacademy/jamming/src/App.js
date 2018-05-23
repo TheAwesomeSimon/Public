@@ -1,3 +1,9 @@
+/*
+Please note, that the app including the CSS was made from scratch, without any resorces or steps 
+provided by CodeAcademy, only based on the features listed. Thank you
+*/
+
+
 import React, { Component } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar/SearchBar';
@@ -43,11 +49,14 @@ class App extends Component {
     })
   }
   handlePlus(track) {
-    let index = this.state.results.indexOf(track);
-    this.state.results.splice(index, 1);
     let arr = this.state.playlist;
-    arr.push(track);
-    this.setState({ playlist: arr });
+    if (this.state.playlist.indexOf(track) === -1) {
+      arr.push(track);
+      this.setState({ Playlist: arr });
+    } else {
+      alert('The song is already in playlist');
+    }
+
   }
   handleMinus(track) {
     let index = this.state.playlist.indexOf(track);

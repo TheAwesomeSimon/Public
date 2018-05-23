@@ -24,7 +24,7 @@ export default class Playlist extends React.Component {
         return (
             <div className="Playlist">
                 <input onChange={this.playlistName} placeholder="New Playlist" />
-                <img src={saveButton} onClick={this.createPlaylist} height="4%" width="4%" class="save" alt="Save to Spotify" />
+                <img src={saveButton} onClick={this.createPlaylist} height="4%" width="4%" className="save" alt="Save to Spotify" />
                 {this.props.playlist.map(song => {
                     return (
                         <div className="Playlist-box">
